@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import type { AppointmentLetterData } from '../types/appointment';
-import { ENGLISH_SAMPLE_DATA, BANGLA_SAMPLE_DATA } from '../constants/initialData';
+import { ENGLISH_SAMPLE_DATA, BANGLA_SAMPLE_DATA, FOOD_FOR_HEALTH_SAMPLE_DATA, CREATIVE_DECORE_SAMPLE_DATA } from '../constants/initialData';
 import { FileText, Sparkles, RefreshCw, Upload, Download, Globe2 } from 'lucide-react';
 
 interface HeaderProps {
@@ -12,11 +12,15 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ data, onUpdate, onReset }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const loadSampleData = (lang: 'en' | 'bn') => {
-    if (lang === 'en') {
+  const loadSampleData = (type: 'en' | 'bn' | 'ffh' | 'cd') => {
+    if (type === 'en') {
       onUpdate(ENGLISH_SAMPLE_DATA);
-    } else {
+    } else if (type === 'bn') {
       onUpdate(BANGLA_SAMPLE_DATA);
+    } else if (type === 'ffh') {
+      onUpdate(FOOD_FOR_HEALTH_SAMPLE_DATA);
+    } else if (type === 'cd') {
+      onUpdate(CREATIVE_DECORE_SAMPLE_DATA);
     }
   };
 
@@ -96,6 +100,20 @@ export const Header: React.FC<HeaderProps> = ({ data, onUpdate, onReset }) => {
             >
               <span>বাংলা ডেমো টেমপ্লেট</span>
               <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-mono">BN</span>
+            </button>
+            <button
+              onClick={() => loadSampleData('ffh')}
+              className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg flex items-center justify-between transition mt-1"
+            >
+              <span>Food For Health</span>
+              <span className="text-[10px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded font-mono">FFH</span>
+            </button>
+            <button
+              onClick={() => loadSampleData('cd')}
+              className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-slate-800 rounded-lg flex items-center justify-between transition mt-1"
+            >
+              <span>Creative Decore</span>
+              <span className="text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-mono">CD</span>
             </button>
           </div>
         </div>

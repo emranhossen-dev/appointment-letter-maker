@@ -4,6 +4,8 @@ import { ModernCorporateTemplate } from '../Templates/ModernCorporateTemplate';
 import { ClassicFormalTemplate } from '../Templates/ClassicFormalTemplate';
 import { StartupMinimalTemplate } from '../Templates/StartupMinimalTemplate';
 import { ExecutiveTemplate } from '../Templates/ExecutiveTemplate';
+import { FoodForHealthTemplate } from '../Templates/FoodForHealthTemplate';
+import { CreativeDecoreTemplate } from '../Templates/CreativeDecoreTemplate';
 import { Download, Printer, ZoomIn, ZoomOut, RotateCcw, FileText, Edit3 } from 'lucide-react';
 import { exportToPdf } from '../../utils/pdfExport';
 
@@ -16,17 +18,21 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
   const [zoom, setZoom] = useState<number>(0.85);
   const [isExporting, setIsExporting] = useState<boolean>(false);
 
-  const renderTemplate = () => {
-    switch (data.style.templateId) {
+  const renderTemplate = (letterData: AppointmentLetterData = data) => {
+    switch (letterData.style.templateId) {
       case 'classic':
-        return <ClassicFormalTemplate data={data} onUpdate={onUpdate} />;
+        return <ClassicFormalTemplate data={letterData} onUpdate={onUpdate} />;
       case 'startup':
-        return <StartupMinimalTemplate data={data} onUpdate={onUpdate} />;
+        return <StartupMinimalTemplate data={letterData} onUpdate={onUpdate} />;
       case 'executive':
-        return <ExecutiveTemplate data={data} onUpdate={onUpdate} />;
+        return <ExecutiveTemplate data={letterData} onUpdate={onUpdate} />;
+      case 'food_for_health':
+        return <FoodForHealthTemplate data={letterData} onUpdate={onUpdate} />;
+      case 'creative_decore':
+        return <CreativeDecoreTemplate data={letterData} onUpdate={onUpdate} />;
       case 'corporate':
       default:
-        return <ModernCorporateTemplate data={data} onUpdate={onUpdate} />;
+        return <ModernCorporateTemplate data={letterData} onUpdate={onUpdate} />;
     }
   };
 
@@ -98,7 +104,7 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition shadow cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5 text-slate-300" />
-            <span>Print</span>
+            <span>{data.batchEmployees && data.batchEmployees.length > 1 ? `Print All (${data.batchEmployees.length})` : 'Print'}</span>
           </button>
 
           {/* Download PDF Button */}
@@ -121,7 +127,40 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
           style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
         >
           <div id="appointment-letter-print-area" className="print-area print:w-full">
-            {renderTemplate()}
+            {/* Interactive Screen Preview for Current Active Employee */}
+            <div className="no-print">
+              {renderTemplate(data)}
+            </div>
+
+            {/* Print Engine Area: Multi-Page output for Batch Employees or Single Page */}
+            <div className="hidden print:block">
+              {data.batchEmployees && data.batchEmployees.length > 0 ? (
+                data.batchEmployees.map((emp) => {
+                  const empData: AppointmentLetterData = {
+                    ...data,
+                    employee: {
+                      ...data.employee,
+                      name: emp.name,
+                      designation: emp.designation,
+                      department: emp.department || data.employee.department,
+                      issueDate: emp.issueDate,
+                      joiningDate: emp.joiningDate,
+                    },
+                    compensation: {
+                      ...data.compensation,
+                      baseSalary: emp.baseSalary,
+                    },
+                  };
+                  return (
+                    <div key={emp.id} className="print-page-break">
+                      {renderTemplate(empData)}
+                    </div>
+                  );
+                })
+              ) : (
+                renderTemplate(data)
+              )}
+            </div>
           </div>
         </div>
       </div>

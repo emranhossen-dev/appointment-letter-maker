@@ -13,6 +13,8 @@ export const StyleCustomizer: React.FC<StyleCustomizerProps> = ({ style, onChang
     { id: 'classic', name: 'Classic Formal', desc: 'Traditional double border frame, elegant typography', previewColor: '#1e3a8a' },
     { id: 'startup', name: 'Startup Minimal', desc: 'Geometric minimalist tech aesthetic with bold fonts', previewColor: '#0f172a' },
     { id: 'executive', name: 'Executive Luxury', desc: 'Dual accent bar, watermark & pill badge metadata', previewColor: '#047857' },
+    { id: 'food_for_health', name: 'Food For Health', desc: 'Official Food For Health template with green banner footer', previewColor: '#265217' },
+    { id: 'creative_decore', name: 'Creative Decore', desc: 'Handcrafted embroidery & stitch aesthetic for artisans', previewColor: '#854d0e' },
   ];
 
   const presetColors = [

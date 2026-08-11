@@ -56,7 +56,17 @@ export interface TermsClause {
   content: string;
 }
 
-export type TemplateId = 'corporate' | 'classic' | 'startup' | 'executive';
+export type TemplateId = 'corporate' | 'classic' | 'startup' | 'executive' | 'food_for_health' | 'creative_decore' | 'custom_company';
+
+export interface BatchEmployeeInput {
+  id: string;
+  name: string;
+  designation: string;
+  department?: string;
+  baseSalary: number;
+  issueDate: string;
+  joiningDate: string;
+}
 
 export interface TemplateStyle {
   templateId: TemplateId;
@@ -79,4 +89,5 @@ export interface AppointmentLetterData {
   customGreeting?: string;
   customOpeningParagraph?: string;
   customClosing?: string;
+  batchEmployees?: BatchEmployeeInput[];
 }

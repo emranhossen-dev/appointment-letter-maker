@@ -8,8 +8,9 @@ import { LetterTextForm } from './components/FormEditor/LetterTextForm';
 import { CompensationForm } from './components/FormEditor/CompensationForm';
 import { TermsForm } from './components/FormEditor/TermsForm';
 import { StyleCustomizer } from './components/FormEditor/StyleCustomizer';
+import { CompanyHubForm } from './components/FormEditor/CompanyHubForm';
 import { LetterPreview } from './components/Preview/LetterPreview';
-import { Building2, User, Type, DollarSign, FileText, Palette } from 'lucide-react';
+import { Building2, User, Type, DollarSign, FileText, Palette, Briefcase } from 'lucide-react';
 
 const LOCAL_STORAGE_KEY = 'lettercraft_appointment_data_v1';
 
@@ -26,7 +27,7 @@ export function App() {
     return ENGLISH_SAMPLE_DATA;
   });
 
-  const [activeTab, setActiveTab] = useState<'company' | 'employee' | 'letterText' | 'compensation' | 'terms' | 'style'>('company');
+  const [activeTab, setActiveTab] = useState<'company' | 'employee' | 'letterText' | 'compensation' | 'terms' | 'style' | 'companyHub'>('company');
 
   // Auto save to localStorage
   useEffect(() => {
@@ -73,6 +74,7 @@ export function App() {
   };
 
   const tabs = [
+    { id: 'companyHub', label: 'Company Hub', icon: Briefcase },
     { id: 'company', label: 'Company Info', icon: Building2 },
     { id: 'employee', label: 'Employee Info', icon: User },
     { id: 'letterText', label: 'Letter Text', icon: Type },
@@ -116,6 +118,10 @@ export function App() {
 
           {/* Tab Content Body */}
           <div className="flex-1 overflow-y-auto p-4 sm:p-6 no-scrollbar">
+            {activeTab === 'companyHub' && (
+              <CompanyHubForm data={data} onChange={setData} />
+            )}
+
             {activeTab === 'company' && (
               <CompanyForm company={data.company} onChange={(updated) => setData({ ...data, company: updated })} />
             )}
