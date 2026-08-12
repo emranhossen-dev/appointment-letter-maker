@@ -74,7 +74,7 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
               LETTER OF APPOINTMENT
             </h2>
             <div className="text-right text-xs font-semibold text-slate-800">
-              Date: {formatDateDisplay(employee.issueDate, lang)}
+              Date: <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
             </div>
           </div>
 

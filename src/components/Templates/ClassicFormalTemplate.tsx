@@ -50,14 +50,14 @@ export const ClassicFormalTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
           <EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />, <EditableText value={company.city} onChange={(v) => updateCompany('city', v)} />
         </p>
         <p className="text-xs text-slate-600">
-          Phone: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /> | Email: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} />
+          Phone: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} />{company.email ? <span> | Email: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
         </p>
       </div>
 
       {/* Date & Ref */}
       <div className="flex justify-between items-center text-xs font-serif mb-6 text-slate-800">
         <p><span className="font-bold">{isBn ? 'রেফারেন্স নং:' : 'Ref No:'}</span> <EditableText value={employee.employeeId} onChange={(v) => updateEmployee('employeeId', v)} /></p>
-        <p><span className="font-bold">{isBn ? 'তারিখ:' : 'Date:'}</span> {formatDateDisplay(employee.issueDate, lang)}</p>
+        <p><span className="font-bold">{isBn ? 'তারিখ:' : 'Date:'}</span> <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} /></p>
       </div>
 
       {/* Recipient */}

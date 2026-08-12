@@ -59,7 +59,7 @@ export const ModernCorporateTemplate: React.FC<TemplateProps> = ({ data, onUpdat
           <p className="font-semibold text-slate-900"><EditableText value={company.name} onChange={(v) => updateCompany('name', v)} /></p>
           <p><EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />, <EditableText value={company.city} onChange={(v) => updateCompany('city', v)} /></p>
           <p><EditableText value={company.country} onChange={(v) => updateCompany('country', v)} /></p>
-          <p><EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /> | <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></p>
+          <p>{company.email ? <span><EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /> | </span> : null}<EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></p>
           {company.website && <p className="text-blue-600 font-medium"><EditableText value={company.website} onChange={(v) => updateCompany('website', v)} /></p>}
           {company.taxId && <p className="text-slate-400 font-mono text-[10px]"><EditableText value={company.taxId} onChange={(v) => updateCompany('taxId', v)} /></p>}
         </div>
@@ -69,7 +69,9 @@ export const ModernCorporateTemplate: React.FC<TemplateProps> = ({ data, onUpdat
       <div className="flex justify-between items-center text-xs font-semibold text-slate-600 mb-5">
         <div>
           <span>{isBn ? 'তারিখ:' : 'Date:'} </span>
-          <span className="text-slate-900 font-bold">{formatDateDisplay(employee.issueDate, lang)}</span>
+          <span className="text-slate-900 font-bold">
+            <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
+          </span>
         </div>
         <div>
           <span>{isBn ? 'আইডি:' : 'Ref ID:'} </span>

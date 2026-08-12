@@ -69,7 +69,7 @@ export const ExecutiveTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) =
         <div className="text-right text-xs text-slate-600 space-y-0.5 font-medium">
           <p className="font-bold text-slate-900"><EditableText value={company.address} onChange={(v) => updateCompany('address', v)} /></p>
           <p><EditableText value={company.city} onChange={(v) => updateCompany('city', v)} />, <EditableText value={company.country} onChange={(v) => updateCompany('country', v)} /></p>
-          <p>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></p>
+          <p>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} />{company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}</p>
           <p className="text-blue-600 font-bold"><EditableText value={company.website} onChange={(v) => updateCompany('website', v)} /></p>
         </div>
       </div>
@@ -86,7 +86,9 @@ export const ExecutiveTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) =
         </div>
         <div>
           <span className="text-slate-400 font-normal">{isBn ? 'তারিখ:' : 'DATE:'} </span>
-          <span className="font-bold text-white">{formatDateDisplay(employee.issueDate, lang)}</span>
+          <span className="font-bold text-white">
+            <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
+          </span>
         </div>
       </div>
 

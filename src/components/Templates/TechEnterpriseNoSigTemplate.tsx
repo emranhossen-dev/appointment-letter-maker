@@ -62,7 +62,7 @@ export const TechEnterpriseNoSigTemplate: React.FC<TemplateProps> = ({ data, onU
             <div className="text-right text-xs text-slate-600 space-y-0.5 leading-tight">
               <p className="font-bold text-slate-900"><EditableText value={company.address} onChange={(v) => updateCompany('address', v)} /></p>
               <p><EditableText value={company.city} onChange={(v) => updateCompany('city', v)} /></p>
-              <p>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></p>
+              <p>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} />{company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}</p>
               {company.website && <p className="font-bold text-sky-600"><EditableText value={company.website} onChange={(v) => updateCompany('website', v)} /></p>}
             </div>
           </div>
@@ -79,7 +79,9 @@ export const TechEnterpriseNoSigTemplate: React.FC<TemplateProps> = ({ data, onU
             </div>
             <div>
               <span className="text-slate-400 uppercase tracking-wider text-[10px]">{isBn ? 'তারিখ:' : 'DATE:'} </span>
-              <span className="font-bold text-white text-xs">{formatDateDisplay(employee.issueDate, lang)}</span>
+              <span className="font-bold text-white text-xs">
+                <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
+              </span>
             </div>
           </div>
 
@@ -177,7 +179,7 @@ export const TechEnterpriseNoSigTemplate: React.FC<TemplateProps> = ({ data, onU
         <div className="text-center sm:text-right leading-tight">
           <p className="text-[10px] opacity-95">
             <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span>
-            <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span>
+            {company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
           </p>
           {company.website && (
             <p className="font-bold text-cyan-300 text-xs">

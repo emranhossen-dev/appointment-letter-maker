@@ -66,7 +66,9 @@ export const ElegantFrameNoSigTemplate: React.FC<TemplateProps> = ({ data, onUpd
               </div>
               <div>
                 <span>Date: </span>
-                <span className="font-bold text-slate-900">{formatDateDisplay(employee.issueDate, lang)}</span>
+                <span className="font-bold text-slate-900">
+                  <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
+                </span>
               </div>
             </div>
 
@@ -166,7 +168,7 @@ export const ElegantFrameNoSigTemplate: React.FC<TemplateProps> = ({ data, onUpd
         <div className="text-center sm:text-right leading-tight">
           <p className="text-[10px] opacity-95">
             <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span>
-            <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span>
+            {company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
           </p>
           {company.website && (
             <p className="font-bold text-amber-200 text-xs">

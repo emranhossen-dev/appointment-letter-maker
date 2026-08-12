@@ -84,12 +84,12 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
                 <EditableText value={company.city || 'Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('city', v)} />
               </p>
               <p className="text-slate-600">
-                T: <EditableText value={company.phone || '+880 1628756785'} onChange={(v) => updateCompany('phone', v)} />
-                {company.email ? <span> | E: <EditableText value={company.email || 'yazmart.bd@gmail.com'} onChange={(v) => updateCompany('email', v)} /></span> : null}
+                T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} />
+                {company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
               </p>
               {company.website ? (
                 <p className="font-bold text-blue-600">
-                  <EditableText value={company.website || 'yazmart.com'} onChange={(v) => updateCompany('website', v)} />
+                  <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
                 </p>
               ) : null}
             </div>
@@ -107,7 +107,9 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
             </div>
             <div>
               <span className="text-slate-400 uppercase tracking-wider text-[10px] sm:text-xs">{isBn ? 'তারিখ:' : 'DATE:'} </span>
-              <span className="font-bold text-white text-xs sm:text-sm">{formatDateDisplay(employee.issueDate, lang)}</span>
+              <span className="font-bold text-white text-xs sm:text-sm">
+                <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
+              </span>
             </div>
           </div>
 
@@ -204,13 +206,15 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
         </div>
 
         <div className="text-center sm:text-right leading-tight">
-          <p className="text-xs opacity-95 font-medium">
-            <span>T: <EditableText value={company.phone || '+880 1628756785'} onChange={(v) => updateCompany('phone', v)} /></span>
-            <span> | E: <EditableText value={company.email || 'yazmart.bd@gmail.com'} onChange={(v) => updateCompany('email', v)} /></span>
+          <p className="text-[10px] opacity-95 font-medium">
+            <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span>
+            {company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
           </p>
-          <p className="font-bold text-amber-300 text-xs sm:text-sm">
-            <EditableText value={company.website || 'yazmart.com'} onChange={(v) => updateCompany('website', v)} />
-          </p>
+          {company.website ? (
+            <p className="font-bold text-amber-300 text-[11px]">
+              <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
+            </p>
+          ) : null}
         </div>
       </div>
 

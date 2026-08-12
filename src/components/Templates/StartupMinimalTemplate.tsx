@@ -68,7 +68,9 @@ export const StartupMinimalTemplate: React.FC<TemplateProps> = ({ data, onUpdate
 
           <div>
             <p className="text-slate-400 font-mono text-[10px] uppercase">START DATE</p>
-            <p className="font-bold text-slate-900 text-sm mt-0.5">{formatDateDisplay(employee.joiningDate, lang)}</p>
+            <p className="font-bold text-slate-900 text-sm mt-0.5">
+              <EditableText value={formatDateDisplay(employee.joiningDate, lang)} onChange={(v) => updateEmployee('joiningDate', v)} />
+            </p>
             <p className="text-slate-500">{employee.employmentType}</p>
           </div>
         </div>

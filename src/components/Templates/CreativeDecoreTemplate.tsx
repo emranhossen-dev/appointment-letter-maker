@@ -81,7 +81,9 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
           <div className="flex justify-end items-center text-xs font-semibold text-slate-700 mb-5 font-sans">
             <div>
               <span>Date: </span>
-              <span className="text-slate-900 font-bold">{formatDateDisplay(employee.issueDate, lang)}</span>
+              <span className="text-slate-900 font-bold">
+                <EditableText value={formatDateDisplay(employee.issueDate, lang)} onChange={(v) => updateEmployee('issueDate', v)} />
+              </span>
             </div>
           </div>
 
