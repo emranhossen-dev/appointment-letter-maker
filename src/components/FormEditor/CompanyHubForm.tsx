@@ -50,6 +50,39 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
     });
   };
 
+  const handleSelectModernMinimalNoSig = () => {
+    onChange({
+      ...data,
+      style: {
+        ...data.style,
+        templateId: 'modern_minimal_nosig',
+        primaryColor: '#0f172a',
+      },
+    });
+  };
+
+  const handleSelectElegantFrameNoSig = () => {
+    onChange({
+      ...data,
+      style: {
+        ...data.style,
+        templateId: 'elegant_frame_nosig',
+        primaryColor: '#92400e',
+      },
+    });
+  };
+
+  const handleSelectTechEnterpriseNoSig = () => {
+    onChange({
+      ...data,
+      style: {
+        ...data.style,
+        templateId: 'tech_enterprise_nosig',
+        primaryColor: '#0369a1',
+      },
+    });
+  };
+
   const handleSelectCreativeDecore = () => {
     onChange({
       ...CREATIVE_DECORE_SAMPLE_DATA,
@@ -149,7 +182,94 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
               </p>
             </div>
             <span className="mt-3 text-[10px] font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded self-start border border-blue-500/20 flex items-center gap-1">
-              <ShoppingBag className="w-3 h-3" /> E-Commerce
+              <ShoppingBag className="w-3 h-3" /> E-Commerce (No-Sign)
+            </span>
+          </button>
+
+          {/* Modern Minimal No-Sign Card */}
+          <button
+            type="button"
+            onClick={handleSelectModernMinimalNoSig}
+            className={`p-4 rounded-xl border text-left transition relative flex flex-col justify-between ${
+              activeTemplateId === 'modern_minimal_nosig'
+                ? 'bg-slate-900 border-slate-400 ring-2 ring-slate-400/20'
+                : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-slate-700 border border-slate-400" />
+                  <span className="font-bold text-sm text-slate-100">Modern Minimal (No-Sign)</span>
+                </div>
+                {activeTemplateId === 'modern_minimal_nosig' && (
+                  <Check className="w-4 h-4 text-slate-300" />
+                )}
+              </div>
+              <p className="text-xs text-slate-400 leading-snug">
+                Sleek dark charcoal header line, candidate metadata bar & signature-free layout.
+              </p>
+            </div>
+            <span className="mt-3 text-[10px] font-semibold text-slate-300 bg-slate-800 px-2 py-0.5 rounded self-start border border-slate-700">
+              Signature-Free
+            </span>
+          </button>
+
+          {/* Elegant Frame No-Sign Card */}
+          <button
+            type="button"
+            onClick={handleSelectElegantFrameNoSig}
+            className={`p-4 rounded-xl border text-left transition relative flex flex-col justify-between ${
+              activeTemplateId === 'elegant_frame_nosig'
+                ? 'bg-slate-900 border-amber-600 ring-2 ring-amber-600/20'
+                : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-amber-700 border border-amber-400" />
+                  <span className="font-bold text-sm text-slate-100">Elegant Frame (No-Sign)</span>
+                </div>
+                {activeTemplateId === 'elegant_frame_nosig' && (
+                  <Check className="w-4 h-4 text-amber-400" />
+                )}
+              </div>
+              <p className="text-xs text-slate-400 leading-snug">
+                Classic double border gold frame typography with signature-free bottom footer.
+              </p>
+            </div>
+            <span className="mt-3 text-[10px] font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded self-start border border-amber-500/20">
+              Signature-Free
+            </span>
+          </button>
+
+          {/* Tech Enterprise No-Sign Card */}
+          <button
+            type="button"
+            onClick={handleSelectTechEnterpriseNoSig}
+            className={`p-4 rounded-xl border text-left transition relative flex flex-col justify-between ${
+              activeTemplateId === 'tech_enterprise_nosig'
+                ? 'bg-slate-900 border-cyan-500 ring-2 ring-cyan-500/20'
+                : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-cyan-600 border border-cyan-400" />
+                  <span className="font-bold text-sm text-slate-100">Tech Enterprise (No-Sign)</span>
+                </div>
+                {activeTemplateId === 'tech_enterprise_nosig' && (
+                  <Check className="w-4 h-4 text-cyan-400" />
+                )}
+              </div>
+              <p className="text-xs text-slate-400 leading-snug">
+                Cyan dual accent bar, tech candidate badge & signature-free enterprise footer.
+              </p>
+            </div>
+            <span className="mt-3 text-[10px] font-semibold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded self-start border border-cyan-500/20">
+              Signature-Free
             </span>
           </button>
 

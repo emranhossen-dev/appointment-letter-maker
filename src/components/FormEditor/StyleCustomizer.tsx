@@ -16,6 +16,9 @@ export const StyleCustomizer: React.FC<StyleCustomizerProps> = ({ style, onChang
     { id: 'food_for_health', name: 'Food For Health', desc: 'Official Food For Health template with green banner footer', previewColor: '#265217' },
     { id: 'creative_decore', name: 'Creative Decore', desc: 'Handcrafted embroidery & stitch aesthetic for artisans', previewColor: '#854d0e' },
     { id: 'yazmart', name: 'YazMart Template', desc: 'Official YazMart e-commerce layout without signature blocks', previewColor: '#1d4ed8' },
+    { id: 'modern_minimal_nosig', name: 'Modern Minimal (No-Sign)', desc: 'Clean charcoal top bar, candidate pill badge & no signature block', previewColor: '#0f172a' },
+    { id: 'elegant_frame_nosig', name: 'Elegant Frame (No-Sign)', desc: 'Classic double border gold frame & no signature block', previewColor: '#92400e' },
+    { id: 'tech_enterprise_nosig', name: 'Tech Enterprise (No-Sign)', desc: 'Cyan tech dual bar, metadata pill banner & no signature block', previewColor: '#0369a1' },
   ];
 
   const presetColors = [

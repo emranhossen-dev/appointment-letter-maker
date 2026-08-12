@@ -56,7 +56,7 @@ export interface TermsClause {
   content: string;
 }
 
-export type TemplateId = 'corporate' | 'classic' | 'startup' | 'executive' | 'food_for_health' | 'creative_decore' | 'yazmart' | 'custom_company';
+export type TemplateId = 'corporate' | 'classic' | 'startup' | 'executive' | 'food_for_health' | 'creative_decore' | 'yazmart' | 'modern_minimal_nosig' | 'elegant_frame_nosig' | 'tech_enterprise_nosig' | 'custom_company';
 
 export interface BatchEmployeeInput {
   id: string;

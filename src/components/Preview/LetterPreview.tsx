@@ -7,6 +7,9 @@ import { ExecutiveTemplate } from '../Templates/ExecutiveTemplate';
 import { FoodForHealthTemplate } from '../Templates/FoodForHealthTemplate';
 import { CreativeDecoreTemplate } from '../Templates/CreativeDecoreTemplate';
 import { YazmartTemplate } from '../Templates/YazmartTemplate';
+import { ModernMinimalNoSigTemplate } from '../Templates/ModernMinimalNoSigTemplate';
+import { ElegantFrameNoSigTemplate } from '../Templates/ElegantFrameNoSigTemplate';
+import { TechEnterpriseNoSigTemplate } from '../Templates/TechEnterpriseNoSigTemplate';
 import { Download, Printer, ZoomIn, ZoomOut, RotateCcw, FileText, Edit3 } from 'lucide-react';
 import { exportToPdf } from '../../utils/pdfExport';
 
@@ -33,6 +36,12 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
         return <CreativeDecoreTemplate data={letterData} onUpdate={onUpdate} />;
       case 'yazmart':
         return <YazmartTemplate data={letterData} onUpdate={onUpdate} />;
+      case 'modern_minimal_nosig':
+        return <ModernMinimalNoSigTemplate data={letterData} onUpdate={onUpdate} />;
+      case 'elegant_frame_nosig':
+        return <ElegantFrameNoSigTemplate data={letterData} onUpdate={onUpdate} />;
+      case 'tech_enterprise_nosig':
+        return <TechEnterpriseNoSigTemplate data={letterData} onUpdate={onUpdate} />;
       case 'corporate':
       default:
         return <ModernCorporateTemplate data={letterData} onUpdate={onUpdate} />;
