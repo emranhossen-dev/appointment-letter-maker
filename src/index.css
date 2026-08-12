@@ -69,6 +69,10 @@ html, body, #root {
   justify-content: space-between;
 }
 
+.a4-sheet.full-bleed {
+  padding: 0;
+}
+
 /* Unified 1:1 Print Engine - Exact On-Screen Match */
 @media print {
   @page {
@@ -115,7 +119,7 @@ html, body, #root {
     height: 297mm !important;
     min-height: 297mm !important;
     max-height: 297mm !important;
-    padding: 0 !important;
+    padding: 0.5in !important;
     margin: 0 auto !important;
     box-shadow: none !important;
     border: none !important;
@@ -130,6 +134,10 @@ html, body, #root {
     justify-content: space-between !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+  }
+
+  .a4-sheet.full-bleed {
+    padding: 0 !important;
   }
 
   .print-page-break {

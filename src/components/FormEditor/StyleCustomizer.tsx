@@ -15,6 +15,7 @@ export const StyleCustomizer: React.FC<StyleCustomizerProps> = ({ style, onChang
     { id: 'executive', name: 'Executive Luxury', desc: 'Dual accent bar, watermark & pill badge metadata', previewColor: '#047857' },
     { id: 'food_for_health', name: 'Food For Health', desc: 'Official Food For Health template with green banner footer', previewColor: '#265217' },
     { id: 'creative_decore', name: 'Creative Decore', desc: 'Handcrafted embroidery & stitch aesthetic for artisans', previewColor: '#854d0e' },
+    { id: 'yazmart', name: 'YazMart Template', desc: 'Official YazMart e-commerce layout without signature blocks', previewColor: '#1d4ed8' },
   ];
 
   const presetColors = [

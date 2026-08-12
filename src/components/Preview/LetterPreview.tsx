@@ -6,6 +6,7 @@ import { StartupMinimalTemplate } from '../Templates/StartupMinimalTemplate';
 import { ExecutiveTemplate } from '../Templates/ExecutiveTemplate';
 import { FoodForHealthTemplate } from '../Templates/FoodForHealthTemplate';
 import { CreativeDecoreTemplate } from '../Templates/CreativeDecoreTemplate';
+import { YazmartTemplate } from '../Templates/YazmartTemplate';
 import { Download, Printer, ZoomIn, ZoomOut, RotateCcw, FileText, Edit3 } from 'lucide-react';
 import { exportToPdf } from '../../utils/pdfExport';
 
@@ -30,6 +31,8 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
         return <FoodForHealthTemplate data={letterData} onUpdate={onUpdate} />;
       case 'creative_decore':
         return <CreativeDecoreTemplate data={letterData} onUpdate={onUpdate} />;
+      case 'yazmart':
+        return <YazmartTemplate data={letterData} onUpdate={onUpdate} />;
       case 'corporate':
       default:
         return <ModernCorporateTemplate data={letterData} onUpdate={onUpdate} />;
@@ -121,9 +124,9 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
       </div>
 
       {/* Main Screen Preview & Unified Print Area */}
-      <div className="flex-1 overflow-auto p-4 sm:p-8 flex justify-center items-start bg-slate-900/60 no-scrollbar print:bg-white print:p-0 print:overflow-visible print:block print:h-auto">
+      <div className="flex-1 overflow-auto p-4 sm:p-8 pb-16 flex justify-center items-start bg-slate-900/60 no-scrollbar print:bg-white print:p-0 print:overflow-visible print:block print:h-auto">
         <div 
-          className="transition-transform duration-150 ease-out origin-top shadow-2xl my-auto print:shadow-none print:transform-none print:m-0"
+          className="transition-transform duration-150 ease-out origin-top shadow-2xl my-4 print:shadow-none print:transform-none print:m-0"
           style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
         >
           <div id="appointment-letter-print-area" className="print-area print:w-full">

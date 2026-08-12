@@ -26,7 +26,7 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
   };
 
   return (
-    <div className="a4-sheet text-slate-800 relative bg-white flex flex-col justify-between p-0 shadow-xl font-serif overflow-hidden h-[297mm] min-h-[297mm] max-h-[297mm] box-border">
+    <div className="a4-sheet full-bleed text-slate-800 relative bg-white flex flex-col justify-between p-0 shadow-xl font-serif overflow-hidden h-[297mm] min-h-[297mm] max-h-[297mm] box-border">
       
       {/* Upper Content & Signature Wrapper */}
       <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between">

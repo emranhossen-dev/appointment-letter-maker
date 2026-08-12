@@ -288,4 +288,90 @@ export const CREATIVE_DECORE_SAMPLE_DATA: AppointmentLetterData = {
   },
 };
 
+export const YAZMART_SAMPLE_DATA: AppointmentLetterData = {
+  company: {
+    name: 'YazMart',
+    tagline: 'SHOP SMART, LIVE BETTER',
+    address: '85/1, Road-04, Mohammadia Housing Society',
+    city: 'Mohammadpur, Dhaka-1207',
+    country: 'Bangladesh',
+    phone: '+880 1628756785',
+    email: 'yazmart.bd@gmail.com',
+    website: 'yazmart.com',
+    signatoryName: 'Faiyaz Uddin',
+    signatoryTitle: 'Founder',
+    logoUrl: '',
+    signatureUrl: '',
+  },
+  employee: {
+    name: 'Maharun Nesa Mira',
+    address: 'Mohammadpur, Dhaka',
+    email: 'maharun@example.com',
+    phone: '+880 1700-000000',
+    employeeId: '',
+    designation: 'Content Writer',
+    department: 'Digital Marketing',
+    workLocation: 'Dhaka Headquarters',
+    employmentType: 'Full-Time',
+    issueDate: '2026-01-05',
+    joiningDate: '2026-01-10',
+    reportingManager: 'Faiyaz Uddin (Founder)',
+    probationPeriod: '3 Months',
+    noticePeriod: '15 Days',
+  },
+  compensation: {
+    currency: 'BDT',
+    currencySymbol: '৳',
+    baseSalary: 18000,
+    salaryFrequency: 'monthly',
+    showTable: true,
+    components: [
+      { id: '1', name: 'Basic Salary', amount: 18000, type: 'allowance' },
+    ],
+  },
+  customSubject: 'LETTER OF APPOINTMENT - YAZMART E-COMMERCE PLATFORM',
+  customGreeting: 'Dear Maharun Nesa Mira,',
+  customOpeningParagraph: 'On behalf of the executive leadership of YazMart (Multi-Vendor E-Commerce Platform), it is our privilege to formalize your appointment as Content Writer in the Digital Marketing department. As key talent in our marketplace ecosystem, your employment terms, obligations, and financial compensation plan are outlined below:',
+  customClosing: 'We welcome you to YazMart and wish you a rewarding and successful journey with our team.',
+  clauses: [
+    {
+      id: 'c1',
+      title: '1. Role & E-Commerce Operations',
+      content: 'You will perform assigned responsibilities in your domain (Web Development, Seller Store Onboarding, Digital Marketing, Content Strategy, or Logistics) to support YazMart multi-vendor marketplace ecosystem.',
+    },
+    {
+      id: 'c2',
+      title: '2. Data Confidentiality & Merchant Security',
+      content: 'You must maintain strict confidentiality regarding seller store accounts, customer records, marketplace algorithms, payment gateway data, platform codebases, and merchant pricing strategies.',
+    },
+    {
+      id: 'c3',
+      title: '3. Platform Code of Conduct & Intellectual Property',
+      content: 'All software features, website code, digital graphics, store policies, and merchant collateral created during employment remain the sole property of YazMart. You are expected to observe strict workplace integrity and anti-fraud policies.',
+    },
+    {
+      id: 'c4',
+      title: '4. Probationary Period & Evaluation',
+      content: 'Your employment will commence on a 3-month probation period. Performance will be evaluated based on operational compliance, milestone fulfillment, and workplace reliability before permanent confirmation.',
+    },
+    {
+      id: 'c5',
+      title: '5. Working Hours & Notice Period',
+      content: 'Our standard working schedule is Sunday to Thursday, 9:00 AM to 6:00 PM. Either party may terminate employment with 15 days written notice during probation, or 30 days written notice post-confirmation.',
+    },
+  ],
+  style: {
+    templateId: 'yazmart',
+    primaryColor: '#1d4ed8',
+    fontFamily: 'sans',
+    fontSize: 'base',
+    showWatermark: false,
+    showStamp: false,
+    showHeaderLine: true,
+    language: 'en',
+  },
+};
+
+
+
 

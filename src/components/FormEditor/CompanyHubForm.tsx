@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import type { AppointmentLetterData } from '../../types/appointment';
-import { FOOD_FOR_HEALTH_SAMPLE_DATA, CREATIVE_DECORE_SAMPLE_DATA, ENGLISH_SAMPLE_DATA } from '../../constants/initialData';
+import { FOOD_FOR_HEALTH_SAMPLE_DATA, CREATIVE_DECORE_SAMPLE_DATA, YAZMART_SAMPLE_DATA, ENGLISH_SAMPLE_DATA } from '../../constants/initialData';
 import { BatchGenerator } from './BatchGenerator';
-import { Building, Check, Plus, Trash2, ShieldCheck, Scissors, UserCheck } from 'lucide-react';
+import { Building, Check, Plus, Trash2, ShieldCheck, Scissors, ShoppingBag, UserCheck } from 'lucide-react';
 
 interface CompanyHubFormProps {
   data: AppointmentLetterData;
@@ -38,6 +38,17 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
   }, [savedPresets]);
 
   const activeTemplateId = data.style.templateId;
+
+  const handleSelectYazMart = () => {
+    onChange({
+      ...YAZMART_SAMPLE_DATA,
+      employee: {
+        ...YAZMART_SAMPLE_DATA.employee,
+        name: data.employee.name || YAZMART_SAMPLE_DATA.employee.name,
+        designation: data.employee.designation || YAZMART_SAMPLE_DATA.employee.designation,
+      },
+    });
+  };
 
   const handleSelectCreativeDecore = () => {
     onChange({
@@ -113,6 +124,35 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
         </label>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* YazMart Official Card */}
+          <button
+            type="button"
+            onClick={handleSelectYazMart}
+            className={`p-4 rounded-xl border text-left transition relative flex flex-col justify-between ${
+              activeTemplateId === 'yazmart'
+                ? 'bg-slate-900 border-blue-500 ring-2 ring-blue-500/20'
+                : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-blue-600 border border-blue-400" />
+                  <span className="font-bold text-sm text-slate-100">YazMart Official</span>
+                </div>
+                {activeTemplateId === 'yazmart' && (
+                  <Check className="w-4 h-4 text-blue-400" />
+                )}
+              </div>
+              <p className="text-xs text-slate-400 leading-snug">
+                Official YazMart e-commerce layout with top dual bar, dark info badge & no signatures.
+              </p>
+            </div>
+            <span className="mt-3 text-[10px] font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded self-start border border-blue-500/20 flex items-center gap-1">
+              <ShoppingBag className="w-3 h-3" /> E-Commerce
+            </span>
+          </button>
+
           {/* Creative Decore Hand Stitch Card */}
           <button
             type="button"
