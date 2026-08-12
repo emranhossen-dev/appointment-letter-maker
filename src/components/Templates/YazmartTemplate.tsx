@@ -34,10 +34,10 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
     <div className="a4-sheet full-bleed text-slate-800 relative bg-white flex flex-col justify-between p-0 shadow-2xl font-sans overflow-hidden h-[297mm] min-h-[297mm] max-h-[297mm] box-border">
       
       {/* Main Upper Content Area */}
-      <div className="p-7 sm:p-9 flex-1 flex flex-col justify-between z-10 relative">
+      <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between z-10 relative">
         <div>
           {/* Top Dual Accent Color Bar */}
-          <div className="flex -mx-7 -mt-7 sm:-mx-9 sm:-mt-9 mb-4">
+          <div className="flex -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 mb-4">
             <div className="h-3 w-3/4 bg-blue-600" style={{ backgroundColor: primaryColor }} />
             <div className="h-3 w-1/4 bg-amber-500" />
           </div>
@@ -47,11 +47,11 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
             {/* Left: YazMart Logo */}
             <div className="flex items-center gap-3">
               {company.logoUrl ? (
-                <img src={company.logoUrl} alt={company.name} className="h-16 object-contain" />
+                <img src={company.logoUrl} alt={company.name} className="h-14 object-contain" />
               ) : (
                 <div className="flex items-center gap-2.5">
                   <div className="relative">
-                    <svg className="w-14 h-11 text-amber-500" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-13 h-10 text-amber-500" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 6H10L15.6 27.2C15.8 28.1 16.6 28.8 17.6 28.8H38.4C39.4 28.8 40.2 28.1 40.4 27.2L44 12H13" stroke="#f97316" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
                       <circle cx="20" cy="34" r="3" fill="#1e293b" />
                       <circle cx="36" cy="34" r="3" fill="#1e293b" />
@@ -112,7 +112,7 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
           </div>
 
           {/* Subject Line (NO EMP Ref ID on the right!) */}
-          <div className="mb-3.5 border-b border-slate-300 pb-2">
+          <div className="mb-3.5 border-b border-slate-300 pb-1.5">
             <h2 className="text-base sm:text-lg font-bold uppercase tracking-tight" style={{ color: primaryColor }}>
               <EditableText 
                 value={customSubject || (isBn ? 'নিয়োগপত্র প্রদান সংক্রান্ত' : `LETTER OF APPOINTMENT FOR THE POSITION OF ${employee.designation.toUpperCase()}`)} 
@@ -140,15 +140,15 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
               />
             </p>
 
-            {/* Terms / Clauses */}
+            {/* ONLY Condition Clauses Section Made Smaller & Compact */}
             {clauses && clauses.length > 0 && (
-              <div className="space-y-2.5 my-3">
+              <div className="space-y-1.5 my-2">
                 {clauses.map((clause) => (
-                  <div key={clause.id} className="text-xs sm:text-sm border-l-2 pl-3 py-0.5" style={{ borderColor: primaryColor }}>
-                    <h4 className="font-bold text-slate-900 mb-0.5 text-xs sm:text-sm">
+                  <div key={clause.id} className="text-[10.5px] sm:text-[11.5px] border-l-2 pl-2.5 py-0.5 leading-tight" style={{ borderColor: primaryColor }}>
+                    <h4 className="font-bold text-slate-900 mb-0.5 text-[11px] sm:text-[12px]">
                       <EditableText value={clause.title} onChange={(v) => updateClause(clause.id, 'title', v)} />
                     </h4>
-                    <p className="text-slate-700 leading-relaxed">
+                    <p className="text-slate-700 leading-snug">
                       <EditableText multiline value={clause.content} onChange={(v) => updateClause(clause.id, 'content', v)} />
                     </p>
                   </div>
@@ -165,7 +165,7 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
             />
 
             {/* Closing Paragraphs Below Salary Table */}
-            <div className="space-y-2.5 text-xs sm:text-sm text-slate-800 leading-relaxed mt-4">
+            <div className="space-y-2 text-xs sm:text-sm text-slate-800 leading-relaxed mt-3">
               <p>
                 <EditableText 
                   multiline 
@@ -190,7 +190,7 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
 
       {/* Pinned Bottom Footer Banner (Company Name, Address, Website, Phone, Email) */}
       <div 
-        className="w-full text-white px-7 py-3.5 mt-auto flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm gap-2 shrink-0 font-sans print:bg-[#1d4ed8] print:text-white z-20"
+        className="w-full text-white px-7 py-3 mt-auto flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm gap-2 shrink-0 font-sans print:bg-[#1d4ed8] print:text-white z-20"
         style={{ backgroundColor: primaryColor }}
       >
         <div className="text-center sm:text-left leading-tight">

@@ -336,28 +336,18 @@ export const YAZMART_SAMPLE_DATA: AppointmentLetterData = {
   clauses: [
     {
       id: 'c1',
-      title: '1. Role & E-Commerce Operations',
-      content: 'You will perform assigned responsibilities in your domain (Web Development, Seller Store Onboarding, Digital Marketing, Content Strategy, or Logistics) to support YazMart multi-vendor marketplace ecosystem.',
+      title: '1. Role & Work Schedule',
+      content: 'Execute assigned responsibilities in your domain for YazMart. Standard schedule: Sun-Thu, 9 AM to 6 PM.',
     },
     {
       id: 'c2',
-      title: '2. Data Confidentiality & Merchant Security',
-      content: 'You must maintain strict confidentiality regarding seller store accounts, customer records, marketplace algorithms, payment gateway data, platform codebases, and merchant pricing strategies.',
+      title: '2. Basic Salary & Sales Commission',
+      content: 'Eligible for extra sales commission and bonuses based on store sales volume in addition to Basic Salary.',
     },
     {
       id: 'c3',
-      title: '3. Platform Code of Conduct & Intellectual Property',
-      content: 'All software features, website code, digital graphics, store policies, and merchant collateral created during employment remain the sole property of YazMart. You are expected to observe strict workplace integrity and anti-fraud policies.',
-    },
-    {
-      id: 'c4',
-      title: '4. Probationary Period & Evaluation',
-      content: 'Your employment will commence on a 3-month probation period. Performance will be evaluated based on operational compliance, milestone fulfillment, and workplace reliability before permanent confirmation.',
-    },
-    {
-      id: 'c5',
-      title: '5. Working Hours & Notice Period',
-      content: 'Our standard working schedule is Sunday to Thursday, 9:00 AM to 6:00 PM. Either party may terminate employment with 15 days written notice during probation, or 30 days written notice post-confirmation.',
+      title: '3. Data Confidentiality & Probation Terms',
+      content: 'Maintain strict confidentiality of platform data & algorithms. IP belongs to company. 3-month probation.',
     },
   ],
   style: {
