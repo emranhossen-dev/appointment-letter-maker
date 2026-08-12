@@ -47,7 +47,7 @@ export const ENGLISH_SAMPLE_DATA: AppointmentLetterData = {
     ],
   },
   customSubject: 'LETTER OF APPOINTMENT FOR THE POSITION OF SENIOR FULL STACK SOFTWARE ENGINEER',
-  customGreeting: 'Dear Tanvir,',
+  customGreeting: '',
   customClosing: 'We look forward to welcoming you to Nexus Innovation Technologies and building great products together.',
   clauses: [
     {
@@ -135,7 +135,7 @@ export const BANGLA_SAMPLE_DATA: AppointmentLetterData = {
     ],
   },
   customSubject: 'সিনিয়র বিজনেস ডেভেলপমেন্ট ম্যানেজার পদে নিয়োগপত্র প্রদান প্রসঙ্গে।',
-  customGreeting: 'জনাব শরিফুল ইসলাম,',
+  customGreeting: '',
   customClosing: 'প্রগতি কনসালটিং ও টেকনোলজিস লিঃ পরিবারে আপনাকে স্বাগত জানাতে আমরা আন্তরিকভাবে আনন্দিত।',
   clauses: [
     {
@@ -330,7 +330,7 @@ export const YAZMART_SAMPLE_DATA: AppointmentLetterData = {
     ],
   },
   customSubject: 'LETTER OF APPOINTMENT - YAZMART E-COMMERCE PLATFORM',
-  customGreeting: 'Dear Maharun Nesa Mira,',
+  customGreeting: '',
   customOpeningParagraph: 'On behalf of the executive leadership of YazMart (Multi-Vendor E-Commerce Platform), it is our privilege to formalize your appointment as Content Writer in the Digital Marketing department. As key talent in our marketplace ecosystem, your employment terms, obligations, and financial compensation plan are outlined below:',
   customClosing: 'We welcome you to YazMart and wish you a rewarding and successful journey with our team.',
   clauses: [

@@ -149,6 +149,7 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
                       issueDate: emp.issueDate,
                       joiningDate: emp.joiningDate,
                     },
+                    customGreeting: '',
                     compensation: {
                       ...data.compensation,
                       baseSalary: emp.baseSalary,
