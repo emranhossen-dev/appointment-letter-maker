@@ -75,14 +75,18 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
             {/* Right: Header Contact Info */}
             <div className="text-right text-xs sm:text-sm text-slate-600 space-y-0.5 font-sans leading-tight">
               <p className="font-bold text-slate-900 text-sm sm:text-base">
-                <EditableText value={company.name || 'YazMart'} onChange={(v) => updateCompany('name', v)} />
+                <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
               </p>
-              <p className="text-slate-700">
-                <EditableText value={company.address || '85/1, Road-04, Mohammadia Housing Society'} onChange={(v) => updateCompany('address', v)} />
-              </p>
-              <p className="text-slate-700">
-                <EditableText value={company.city || 'Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('city', v)} />
-              </p>
+              {company.address?.trim() ? (
+                <p className="text-slate-700">
+                  <EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />
+                </p>
+              ) : null}
+              {company.city?.trim() ? (
+                <p className="text-slate-700">
+                  <EditableText value={company.city} onChange={(v) => updateCompany('city', v)} />
+                </p>
+              ) : null}
               {(company.phone?.trim() || company.email?.trim()) ? (
                 <p className="text-slate-600">
                   {company.phone?.trim() ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
@@ -198,12 +202,14 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
       >
         <div className="text-center sm:text-left leading-tight">
           <p className="font-bold text-amber-300 text-sm">
-            <EditableText value={company.name || 'YazMart'} onChange={(v) => updateCompany('name', v)} />
+            <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
             <span className="font-normal text-white ml-1.5 opacity-90 text-xs">— Multi-Vendor E-Commerce Platform</span>
           </p>
-          <p className="text-xs opacity-90">
-            <EditableText value={company.address || '85/1, Road-04, Mohammadia Housing Society, Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('address', v)} />
-          </p>
+          {company.address?.trim() ? (
+            <p className="text-xs opacity-90">
+              <EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />
+            </p>
+          ) : null}
         </div>
 
         <div className="text-center sm:text-right leading-tight">

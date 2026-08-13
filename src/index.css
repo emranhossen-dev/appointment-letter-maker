@@ -170,8 +170,12 @@ html, body, #root {
     background: transparent !important;
   }
 
+  .no-print-placeholder,
+  [contenteditable]:empty,
   [contenteditable]:empty::before {
     content: "" !important;
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 }

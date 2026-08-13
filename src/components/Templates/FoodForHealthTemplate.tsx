@@ -44,11 +44,13 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
             {/* Right Header Title & Tagline */}
             <div className="text-right">
               <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight" style={{ color: primaryColor }}>
-                <EditableText value={company.name || 'FOOD FOR HEALTH'} onChange={(v) => updateCompany('name', v)} />
+                <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
               </h1>
-              <p className="text-xs font-semibold text-slate-700 mt-1 tracking-wide">
-                <EditableText value={company.tagline || 'Healthy Food • Healthy Life'} onChange={(v) => updateCompany('tagline', v)} />
-              </p>
+              {company.tagline?.trim() ? (
+                <p className="text-xs font-semibold text-slate-700 mt-1 tracking-wide">
+                  <EditableText value={company.tagline} onChange={(v) => updateCompany('tagline', v)} />
+                </p>
+              ) : null}
             </div>
           </div>
 
@@ -139,10 +141,10 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
             )}
 
             <p className="font-extrabold text-slate-900 pt-6">
-              <EditableText value={company.signatoryName || 'Aysha'} onChange={(v) => updateCompany('signatoryName', v)} />
+              <EditableText value={company.signatoryName} onChange={(v) => updateCompany('signatoryName', v)} />
             </p>
             <p className="text-slate-800 font-normal">
-              <EditableText value={company.signatoryTitle || 'Founder'} onChange={(v) => updateCompany('signatoryTitle', v)} />
+              <EditableText value={company.signatoryTitle} onChange={(v) => updateCompany('signatoryTitle', v)} />
             </p>
           </div>
         </div>
@@ -165,9 +167,11 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
           {company.email ? <p><EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></p> : null}
         </div>
 
-        <div className="text-center sm:text-right leading-tight font-medium">
-          <p><EditableText value={company.website || 'www.foodforhealths.com'} onChange={(v) => updateCompany('website', v)} /></p>
-        </div>
+        {company.website?.trim() ? (
+          <div className="text-center sm:text-right leading-tight font-medium">
+            <p><EditableText value={company.website} onChange={(v) => updateCompany('website', v)} /></p>
+          </div>
+        ) : null}
       </div>
 
     </div>

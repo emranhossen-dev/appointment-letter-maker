@@ -52,9 +52,11 @@ export const TechEnterpriseNoSigTemplate: React.FC<TemplateProps> = ({ data, onU
                   <h1 className="text-2xl font-extrabold tracking-tight uppercase" style={{ color: primaryColor }}>
                     <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
                   </h1>
-                  <p className="text-xs font-semibold text-cyan-600 tracking-wider uppercase">
-                    <EditableText value={company.tagline || 'ENTERPRISE SOLUTIONS'} onChange={(v) => updateCompany('tagline', v)} />
-                  </p>
+                  {company.tagline?.trim() ? (
+                    <p className="text-xs font-semibold text-cyan-600 tracking-wider uppercase">
+                      <EditableText value={company.tagline} onChange={(v) => updateCompany('tagline', v)} />
+                    </p>
+                  ) : null}
                 </div>
               )}
             </div>

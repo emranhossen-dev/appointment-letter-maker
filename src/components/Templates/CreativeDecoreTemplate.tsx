@@ -128,14 +128,18 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
                 Terms of Employment:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm pt-1">
-                <div>
-                  <span className="font-bold text-slate-900">Department: </span>
-                  <EditableText value={employee.department || 'Hand Stitch'} onChange={(v) => updateEmployee('department', v)} />
-                </div>
-                <div>
-                  <span className="font-bold text-slate-900">Position: </span>
-                  <EditableText value={employee.designation} onChange={(v) => updateEmployee('designation', v)} />
-                </div>
+                {employee.department?.trim() ? (
+                  <div>
+                    <span className="font-bold text-slate-900">Department: </span>
+                    <EditableText value={employee.department} onChange={(v) => updateEmployee('department', v)} />
+                  </div>
+                ) : null}
+                {employee.designation?.trim() ? (
+                  <div>
+                    <span className="font-bold text-slate-900">Position: </span>
+                    <EditableText value={employee.designation} onChange={(v) => updateEmployee('designation', v)} />
+                  </div>
+                ) : null}
                 <div>
                   <span className="font-bold text-slate-900">Joining Date: </span>
                   {formatDateDisplay(employee.joiningDate, lang)}
@@ -178,10 +182,10 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
             )}
 
             <p className="font-extrabold text-slate-900 pt-6">
-              <EditableText value={company.signatoryName || 'Tabassum'} onChange={(v) => updateCompany('signatoryName', v)} />
+              <EditableText value={company.signatoryName} onChange={(v) => updateCompany('signatoryName', v)} />
             </p>
             <p className="text-slate-600 text-xs italic font-sans">
-              <EditableText value={company.signatoryTitle || 'Founder'} onChange={(v) => updateCompany('signatoryTitle', v)} />
+              <EditableText value={company.signatoryTitle} onChange={(v) => updateCompany('signatoryTitle', v)} />
             </p>
           </div>
         </div>
