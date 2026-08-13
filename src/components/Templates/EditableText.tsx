@@ -19,7 +19,7 @@ export const EditableText: React.FC<EditableTextProps> = ({
 }) => {
   const spanRef = useRef<HTMLSpanElement>(null);
 
-  // Synchronize DOM text with React value prop when value changes externally
+  // Synchronize DOM text with React value prop when value changes
   useEffect(() => {
     if (spanRef.current && document.activeElement !== spanRef.current) {
       spanRef.current.innerText = value || '';
@@ -43,8 +43,6 @@ export const EditableText: React.FC<EditableTextProps> = ({
     }
   };
 
-  const isEmpty = !value || value.trim() === '';
-
   return (
     <span
       ref={spanRef}
@@ -53,17 +51,12 @@ export const EditableText: React.FC<EditableTextProps> = ({
       onInput={handleInput}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
-      className={`hover:bg-blue-50/80 focus:bg-blue-100/90 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded px-0.5 transition cursor-text hover:border-b hover:border-blue-400 border-dashed relative ${className}`}
+      data-placeholder={placeholder}
+      className={`hover:bg-blue-50/80 focus:bg-blue-100/90 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded px-0.5 transition cursor-text hover:border-b hover:border-blue-400 border-dashed relative inline-block min-w-[1ch] ${className}`}
       style={style}
       title="Click directly to edit text on letter"
     >
-      {isEmpty ? (
-        <span className="no-print-placeholder text-slate-400/60 italic font-normal text-[0.9em] pointer-events-none select-none">
-          {placeholder}
-        </span>
-      ) : (
-        value
-      )}
+      {value || ''}
     </span>
   );
 };

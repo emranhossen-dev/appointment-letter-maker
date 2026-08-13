@@ -73,6 +73,15 @@ html, body, #root {
   padding: 0;
 }
 
+/* On-Screen Guided Editing Placeholder */
+[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(148, 163, 184, 0.6);
+  font-style: italic;
+  font-weight: normal;
+  pointer-events: none;
+}
+
 /* Unified 1:1 Print Engine - Exact On-Screen Match */
 @media print {
   @page {
@@ -170,6 +179,7 @@ html, body, #root {
     background: transparent !important;
   }
 
+  [data-placeholder]:empty::before,
   .no-print-placeholder,
   [contenteditable]:empty,
   [contenteditable]:empty::before {

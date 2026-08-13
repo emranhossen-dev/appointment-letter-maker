@@ -139,41 +139,42 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
           style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
         >
           <div id="appointment-letter-print-area" className="print-area print:w-full">
-            {/* Interactive Screen Preview for Current Active Employee */}
-            <div className="no-print">
-              {renderTemplate(data)}
-            </div>
-
-            {/* Print Engine Area: Multi-Page output for Batch Employees or Single Page */}
-            <div className="hidden print:block">
-              {data.batchEmployees && data.batchEmployees.length > 0 ? (
-                data.batchEmployees.map((emp) => {
-                  const empData: AppointmentLetterData = {
-                    ...data,
-                    employee: {
-                      ...data.employee,
-                      name: emp.name,
-                      designation: emp.designation,
-                      department: emp.department || data.employee.department,
-                      issueDate: emp.issueDate,
-                      joiningDate: emp.joiningDate,
-                    },
-                    customGreeting: '',
-                    compensation: {
-                      ...data.compensation,
-                      baseSalary: emp.baseSalary,
-                    },
-                  };
-                  return (
-                    <div key={emp.id} className="print-page-break">
-                      {renderTemplate(empData)}
-                    </div>
-                  );
-                })
-              ) : (
-                renderTemplate(data)
-              )}
-            </div>
+            {data.batchEmployees && data.batchEmployees.length > 1 ? (
+              <>
+                <div className="no-print">
+                  {renderTemplate(data)}
+                </div>
+                <div className="hidden print:block">
+                  {data.batchEmployees.map((emp) => {
+                    const empData: AppointmentLetterData = {
+                      ...data,
+                      employee: {
+                        ...data.employee,
+                        name: emp.name,
+                        designation: emp.designation,
+                        department: emp.department || data.employee.department,
+                        issueDate: emp.issueDate,
+                        joiningDate: emp.joiningDate,
+                      },
+                      customGreeting: '',
+                      compensation: {
+                        ...data.compensation,
+                        baseSalary: emp.baseSalary,
+                      },
+                    };
+                    return (
+                      <div key={emp.id} className="print-page-break">
+                        {renderTemplate(empData)}
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            ) : (
+              <div>
+                {renderTemplate(data)}
+              </div>
+            )}
           </div>
         </div>
       </div>
