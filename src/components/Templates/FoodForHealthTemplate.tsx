@@ -1,6 +1,6 @@
 import React from 'react';
 import type { AppointmentLetterData } from '../../types/appointment';
-import { formatDateDisplay, formatDynamicOpening } from '../../utils/formatters';
+import { formatDateDisplay } from '../../utils/formatters';
 import { EditableText } from './EditableText';
 
 interface TemplateProps {
@@ -9,7 +9,7 @@ interface TemplateProps {
 }
 
 export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => {
-  const { company, employee, compensation, style, customGreeting, customOpeningParagraph } = data;
+  const { company, employee, compensation, style, customGreeting, customOpeningParagraph, customClosing } = data;
   const primaryColor = style.primaryColor || '#265217';
   const lang = style.language || 'en';
 
@@ -80,7 +80,9 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
             <p>
               <EditableText 
                 multiline
-                value={formatDynamicOpening(customOpeningParagraph, data)} 
+                value={customOpeningParagraph || (lang === 'bn' 
+                  ? `আমরা আনন্দের সাথে জানাচ্ছি যে, ${company.name || ''}-এ আপনাকে ${employee.designation || ''} পদে নিয়োগ প্রদান করা হলো। আগামী ${formatDateDisplay(employee.joiningDate, lang)} তারিখে আপনার যোগদান কার্যকর হবে।`
+                  : `We are pleased to appoint you as ${employee.designation || ''} at ${company.name || ''}, effective from ${formatDateDisplay(employee.joiningDate, lang)}. In this role, you will be responsible for executing all duties and responsibilities related to your position.`)} 
                 onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
               />
             </p>
@@ -89,17 +91,23 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
             <div className="py-2 space-y-2 font-medium">
               <p className="font-semibold text-slate-900">Terms of Employment:</p>
               <div className="pl-2 space-y-1.5 text-xs sm:text-sm">
-                <div className="flex gap-2">
-                  <span className="font-bold w-28 text-slate-900">Department:</span>
-                  <span><EditableText value={employee.department} onChange={(v) => updateEmployee('department', v)} /></span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="font-bold w-28 text-slate-900">Position :</span>
-                  <span><EditableText value={employee.designation} onChange={(v) => updateEmployee('designation', v)} /></span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="font-bold w-28 text-slate-900">Joining Date:</span>
-                  <span>{formatDateDisplay(employee.joiningDate, lang)}</span>
+                {employee.department?.trim() ? (
+                  <div className="flex gap-2">
+                    <span className="font-bold w-28 text-slate-900">Department:</span>
+                    <span><EditableText value={employee.department} onChange={(v) => updateEmployee('department', v)} /></span>
+                  </div>
+                ) : null}
+                {employee.designation?.trim() ? (
+                  <div className="flex gap-2">
+                    <span className="font-bold w-28 text-slate-900">Position :</span>
+                    <span><EditableText value={employee.designation} onChange={(v) => updateEmployee('designation', v)} /></span>
+                  </div>
+                ) : null}
+                <div>
+                  <div className="flex gap-2">
+                    <span className="font-bold w-28 text-slate-900">Joining Date:</span>
+                    <span>{formatDateDisplay(employee.joiningDate, lang)}</span>
+                  </div>
                 </div>
                 <div className="flex gap-2">
                   <span className="font-bold w-28 text-slate-900">Salary:</span>
@@ -116,15 +124,16 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
               </div>
             </div>
 
-            <p>
-              You are required to maintain full confidentiality regarding all company information and strategies.
-            </p>
-
-            <p>
-              We welcome you to <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} /> and wish you a successful journey with us.
-            </p>
-
-            <p className="pt-1">Thank you.</p>
+            {/* Closing Paragraphs (Fully Editable on Canvas & Form) */}
+            <div className="pt-1 whitespace-pre-line">
+              <EditableText 
+                multiline
+                value={customClosing || (lang === 'bn' 
+                  ? `কোম্পানির গোপনীয়তা রক্ষা করা আপনার জন্য আবশ্যিক।\n\nআমরা আপনাকে ${company.name || ''}-এ স্বাগতম জানাচ্ছি।\n\nধন্যবাদ।`
+                  : `You are required to maintain full confidentiality regarding all company information and strategies.\n\nWe welcome you to ${company.name || ''} and wish you a successful journey with us.\n\nThank you.`)} 
+                onChange={(v) => onUpdate && onUpdate({ ...data, customClosing: v })} 
+              />
+            </div>
           </div>
         </div>
 
