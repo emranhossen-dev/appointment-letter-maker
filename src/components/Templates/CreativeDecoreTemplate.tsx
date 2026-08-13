@@ -185,26 +185,25 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
       >
         <div className="text-center sm:text-left leading-tight">
           <p className="font-medium">
-            <EditableText value={company.address || 'O-5,Nurjahan Road , Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('address', v)} />
+            <EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />
           </p>
         </div>
 
         <div className="text-center leading-tight">
           <p>
-            <EditableText value={company.phone || '+880 1957525691'} onChange={(v) => updateCompany('phone', v)} />
-            {company.email ? <span> | <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+            {company.phone ? <span><EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+            {company.phone && company.email ? <span> | </span> : null}
+            {company.email ? <span><EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
           </p>
         </div>
 
-        {company.website ? (
-          <div className="text-center sm:text-right leading-tight font-medium">
-            <p><EditableText value={company.website} onChange={(v) => updateCompany('website', v)} /></p>
-          </div>
-        ) : (
-          <div className="text-center sm:text-right leading-tight font-medium text-[10px] text-amber-200">
-            <span>Creative Decore</span>
-          </div>
-        )}
+        <div className="text-center sm:text-right leading-tight font-medium text-[11px] text-amber-200">
+          {company.website ? (
+            <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
+          ) : (
+            <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
+          )}
+        </div>
       </div>
 
     </div>

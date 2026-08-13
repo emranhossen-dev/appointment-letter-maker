@@ -38,20 +38,7 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
             <div className="flex items-center gap-3">
               {company.logoUrl ? (
                 <img src={company.logoUrl} alt={company.name} className="h-16 object-contain" />
-              ) : (
-                <div className="relative flex items-center justify-center">
-                  <svg className="w-20 h-16 text-emerald-800" viewBox="0 0 100 70" fill="currentColor">
-                    <path d="M 10 50 C 20 10, 80 5, 90 25 C 95 45, 60 65, 30 60 C 15 58, 10 52, 10 50 Z" fill="#2d6a27" />
-                    <path d="M 15 48 C 30 25, 75 20, 85 30" stroke="#8bc34a" strokeWidth="2.5" fill="none" />
-                    <path d="M 35 32 L 45 28 M 50 35 L 60 30 M 65 38 L 75 35" stroke="#8bc34a" strokeWidth="1.5" />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center -rotate-6">
-                    <span className="text-[11px] font-black italic tracking-tighter text-amber-300 leading-none drop-shadow">Food</span>
-                    <span className="text-[7px] font-bold text-white uppercase tracking-widest leading-none">For</span>
-                    <span className="text-[10px] font-extrabold italic text-amber-200 leading-none">Health</span>
-                  </div>
-                </div>
-              )}
+              ) : null}
             </div>
 
             {/* Right Header Title & Tagline */}
@@ -169,13 +156,13 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
       >
         <div className="text-center sm:text-left leading-tight">
           <p className="font-medium">
-            <EditableText value={company.address || 'O-5,Nurjahan Road , Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('address', v)} />
+            <EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />
           </p>
         </div>
 
         <div className="text-center leading-tight">
-          <p><EditableText value={company.phone || '+880 1626 686555'} onChange={(v) => updateCompany('phone', v)} /></p>
-          <p><EditableText value={company.email || 'foodforhealths@gmail.com'} onChange={(v) => updateCompany('email', v)} /></p>
+          {company.phone ? <p><EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></p> : null}
+          {company.email ? <p><EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></p> : null}
         </div>
 
         <div className="text-center sm:text-right leading-tight font-medium">

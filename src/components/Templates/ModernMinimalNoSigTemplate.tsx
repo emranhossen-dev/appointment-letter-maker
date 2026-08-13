@@ -59,7 +59,13 @@ export const ModernMinimalNoSigTemplate: React.FC<TemplateProps> = ({ data, onUp
             <div className="text-right text-xs text-slate-600 space-y-0.5 leading-tight">
               <p className="font-bold text-slate-900"><EditableText value={company.address} onChange={(v) => updateCompany('address', v)} /></p>
               <p><EditableText value={company.city} onChange={(v) => updateCompany('city', v)} /></p>
-              <p>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} />{company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}</p>
+              {(company.phone || company.email) && (
+                <p>
+                  {company.phone ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+                  {company.phone && company.email ? <span> | </span> : null}
+                  {company.email ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+                </p>
+              )}
               {company.website && <p className="font-bold text-blue-600"><EditableText value={company.website} onChange={(v) => updateCompany('website', v)} /></p>}
             </div>
           </div>
@@ -174,10 +180,13 @@ export const ModernMinimalNoSigTemplate: React.FC<TemplateProps> = ({ data, onUp
         </div>
 
         <div className="text-center sm:text-right leading-tight">
-          <p className="text-[10px] opacity-95">
-            <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span>
-            {company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
-          </p>
+          {(company.phone || company.email) && (
+            <p className="text-[10px] opacity-95">
+              {company.phone ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+              {company.phone && company.email ? <span> | </span> : null}
+              {company.email ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+            </p>
+          )}
           {company.website && (
             <p className="font-bold text-amber-300 text-xs">
               <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
