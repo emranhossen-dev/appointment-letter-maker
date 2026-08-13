@@ -152,7 +152,7 @@ export const LetterPreview: React.FC<LetterPreviewProps> = ({ data, onUpdate }) 
                         ...data.employee,
                         name: emp.name,
                         designation: emp.designation,
-                        department: emp.department || data.employee.department,
+                        department: emp.department !== undefined ? emp.department : (data.employee.department || ''),
                         issueDate: emp.issueDate,
                         joiningDate: emp.joiningDate,
                       },
