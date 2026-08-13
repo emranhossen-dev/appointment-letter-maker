@@ -1,6 +1,6 @@
 import React from 'react';
 import type { AppointmentLetterData } from '../../types/appointment';
-import { formatDateDisplay } from '../../utils/formatters';
+import { formatDateDisplay, formatDynamicOpening, formatDynamicSubject } from '../../utils/formatters';
 import { SalaryTable } from './SalaryTable';
 import { EditableText } from './EditableText';
 
@@ -95,7 +95,7 @@ export const TechEnterpriseNoSigTemplate: React.FC<TemplateProps> = ({ data, onU
           <div className="mb-3.5 border-b border-slate-300 pb-1.5">
             <h2 className="text-base font-bold uppercase tracking-tight" style={{ color: primaryColor }}>
               <EditableText 
-                value={customSubject || (isBn ? 'অফিসিয়াল নিয়োগপত্র প্রদান সংক্রান্ত' : 'OFFICIAL APPOINTMENT LETTER')} 
+                value={formatDynamicSubject(customSubject, data)} 
                 onChange={(v) => onUpdate && onUpdate({ ...data, customSubject: v })} 
               />
             </h2>
@@ -113,9 +113,7 @@ export const TechEnterpriseNoSigTemplate: React.FC<TemplateProps> = ({ data, onU
             <p className="text-slate-700">
               <EditableText 
                 multiline
-                value={customOpeningParagraph || (isBn 
-                  ? `আমরা আনন্দের সাথে জানাচ্ছি যে, ${company.name}-এ আপনাকে ${employee.designation} পদে নিয়োগ প্রদান করা হলো। আগামী ${formatDateDisplay(employee.joiningDate, lang)} হতে আপনার দায়িত্ব কার্যকর হবে। মূল শর্তাবলী নিম্নে তুলে ধরা হলো:`
-                  : `We are pleased to offer you employment at ${company.name} as ${employee.designation}. Your employment will commence on ${formatDateDisplay(employee.joiningDate, lang)}. The governing terms and conditions are outlined below:`)} 
+                value={formatDynamicOpening(customOpeningParagraph, data)} 
                 onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
               />
             </p>

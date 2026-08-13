@@ -1,6 +1,6 @@
 import React from 'react';
 import type { AppointmentLetterData } from '../../types/appointment';
-import { formatDateDisplay } from '../../utils/formatters';
+import { formatDateDisplay, formatDynamicOpening } from '../../utils/formatters';
 import { EditableText } from './EditableText';
 
 interface TemplateProps {
@@ -9,7 +9,7 @@ interface TemplateProps {
 }
 
 export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => {
-  const { company, employee, compensation, style, customGreeting } = data;
+  const { company, employee, compensation, style, customGreeting, customOpeningParagraph } = data;
   const primaryColor = style.primaryColor || '#265217';
   const lang = style.language || 'en';
 
@@ -76,11 +76,11 @@ export const FoodForHealthTemplate: React.FC<TemplateProps> = ({ data, onUpdate 
             </p>
 
             <p>
-              We are pleased to appoint you as <strong className="font-extrabold"><EditableText value={employee.designation} onChange={(v) => updateEmployee('designation', v)} /></strong> at <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />.
-            </p>
-
-            <p>
-              In this role, you will be responsible for executing all duties and responsibilities related to your position to drive our digital marketing goals.
+              <EditableText 
+                multiline
+                value={formatDynamicOpening(customOpeningParagraph, data)} 
+                onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
+              />
             </p>
 
             {/* Terms of Employment Box */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { AppointmentLetterData } from '../../types/appointment';
-import { formatDateDisplay } from '../../utils/formatters';
+import { formatDateDisplay, formatDynamicOpening, formatDynamicSubject } from '../../utils/formatters';
 import { SalaryTable } from './SalaryTable';
 import { EditableText } from './EditableText';
 
@@ -90,9 +90,9 @@ export const ModernMinimalNoSigTemplate: React.FC<TemplateProps> = ({ data, onUp
 
           {/* Subject Line (No Ref ID on the right) */}
           <div className="mb-3.5 border-b border-slate-300 pb-1.5">
-            <h2 className="text-base font-bold uppercase tracking-tight text-slate-900" style={{ color: primaryColor }}>
+            <h2 className="text-base sm:text-lg font-bold uppercase tracking-wider text-slate-900">
               <EditableText 
-                value={customSubject || (isBn ? 'অফিসিয়াল নিয়োগপত্র' : 'OFFICIAL APPOINTMENT LETTER')} 
+                value={formatDynamicSubject(customSubject, data)} 
                 onChange={(v) => onUpdate && onUpdate({ ...data, customSubject: v })} 
               />
             </h2>
@@ -110,9 +110,7 @@ export const ModernMinimalNoSigTemplate: React.FC<TemplateProps> = ({ data, onUp
             <p className="text-slate-700">
               <EditableText 
                 multiline
-                value={customOpeningParagraph || (isBn 
-                  ? `আমরা আনন্দের সাথে জানাচ্ছি যে, ${company.name}-এ আপনাকে ${employee.designation} পদে নিয়োগপত্র প্রদান করা হলো। আপনার যোগদানের তারিখ ${formatDateDisplay(employee.joiningDate, lang)} নির্ধারণ করা হয়েছে। নিয়োগের মূল শর্তাবলী নিম্নে তুলে ধরা হলো:`
-                  : `We are pleased to formalize your appointment as ${employee.designation} at ${company.name}. Your appointment is effective from ${formatDateDisplay(employee.joiningDate, lang)}. The terms and conditions governing your position are outlined below:`)} 
+                value={formatDynamicOpening(customOpeningParagraph, data)} 
                 onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
               />
             </p>
