@@ -34,7 +34,15 @@ export const formatDateDisplay = (dateString: string, lang: 'en' | 'bn' = 'en'):
   if (!dateString) return '';
   
   try {
-    const date = new Date(dateString);
+    let date: Date;
+    const ymdMatch = dateString.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (ymdMatch) {
+      const [, y, m, d] = ymdMatch;
+      date = new Date(parseInt(y, 10), parseInt(m, 10) - 1, parseInt(d, 10));
+    } else {
+      date = new Date(dateString);
+    }
+
     if (isNaN(date.getTime())) return dateString;
 
     const options: Intl.DateTimeFormatOptions = {

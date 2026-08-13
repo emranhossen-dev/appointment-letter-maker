@@ -44,8 +44,7 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
       ...YAZMART_SAMPLE_DATA,
       employee: {
         ...YAZMART_SAMPLE_DATA.employee,
-        name: data.employee.name || YAZMART_SAMPLE_DATA.employee.name,
-        designation: data.employee.designation || YAZMART_SAMPLE_DATA.employee.designation,
+        ...data.employee,
       },
     });
   };
@@ -88,8 +87,7 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
       ...CREATIVE_DECORE_SAMPLE_DATA,
       employee: {
         ...CREATIVE_DECORE_SAMPLE_DATA.employee,
-        name: data.employee.name || CREATIVE_DECORE_SAMPLE_DATA.employee.name,
-        designation: data.employee.designation || CREATIVE_DECORE_SAMPLE_DATA.employee.designation,
+        ...data.employee,
       },
     });
   };
@@ -99,8 +97,7 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
       ...FOOD_FOR_HEALTH_SAMPLE_DATA,
       employee: {
         ...FOOD_FOR_HEALTH_SAMPLE_DATA.employee,
-        name: data.employee.name || FOOD_FOR_HEALTH_SAMPLE_DATA.employee.name,
-        designation: data.employee.designation || FOOD_FOR_HEALTH_SAMPLE_DATA.employee.designation,
+        ...data.employee,
       },
     });
   };
@@ -110,7 +107,7 @@ export const CompanyHubForm: React.FC<CompanyHubFormProps> = ({ data, onChange }
       ...ENGLISH_SAMPLE_DATA,
       employee: {
         ...ENGLISH_SAMPLE_DATA.employee,
-        name: data.employee.name || ENGLISH_SAMPLE_DATA.employee.name,
+        ...data.employee,
       },
     });
   };
