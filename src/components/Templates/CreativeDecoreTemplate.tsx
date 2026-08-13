@@ -9,7 +9,7 @@ interface TemplateProps {
 }
 
 export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => {
-  const { company, employee, compensation, style, customGreeting } = data;
+  const { company, employee, compensation, style, customGreeting, customSubject, customOpeningParagraph } = data;
   const primaryColor = style.primaryColor || '#854d0e';
   const lang = style.language || 'en';
 
@@ -48,11 +48,13 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
               ) : (
                 <div>
                   <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight" style={{ color: primaryColor }}>
-                    <EditableText value={company.name || 'CREATIVE DECORE'} onChange={(v) => updateCompany('name', v)} />
+                    <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
                   </h1>
-                  <p className="text-xs text-amber-900/80 font-medium italic mt-0.5">
-                    <EditableText value={company.tagline || 'Exquisite Handcrafted Embroidery & Home Textiles'} onChange={(v) => updateCompany('tagline', v)} />
-                  </p>
+                  {company.tagline?.trim() ? (
+                    <p className="text-xs text-amber-900/80 font-medium italic mt-0.5">
+                      <EditableText value={company.tagline} onChange={(v) => updateCompany('tagline', v)} />
+                    </p>
+                  ) : null}
                 </div>
               )}
             </div>
@@ -95,7 +97,10 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
           {/* Centered Document Title */}
           <div className="mb-5 text-center">
             <h2 className="text-lg sm:text-xl font-bold tracking-wide uppercase border-b-2 inline-block pb-1" style={{ color: primaryColor, borderColor: primaryColor }}>
-              LETTER OF APPOINTMENT
+              <EditableText 
+                value={customSubject || (lang === 'bn' ? `নিয়োগপত্র - ${employee.designation ? employee.designation.toUpperCase() : ''}` : `LETTER OF APPOINTMENT - ${employee.designation ? employee.designation.toUpperCase() : ''}`)} 
+                onChange={(v) => onUpdate && onUpdate({ ...data, customSubject: v })} 
+              />
             </h2>
           </div>
 
@@ -110,11 +115,13 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
             </p>
 
             <p>
-              We are pleased to appoint you as <strong className="font-extrabold text-slate-900"><EditableText value={employee.designation} onChange={(v) => updateEmployee('designation', v)} /></strong> at <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />.
-            </p>
-
-            <p>
-              In this role, you will be responsible for executing all duties and responsibilities related to hand-stitch embroidery, artisan production, quality craftsmanship, and team collaboration.
+              <EditableText 
+                multiline
+                value={customOpeningParagraph || (lang === 'bn' 
+                  ? `আমরা আনন্দের সাথে জানাচ্ছি যে, ${company.name || ''}-এ আপনাকে ${employee.designation || ''} পদে নিয়োগ প্রদান করা হলো। আগামী ${formatDateDisplay(employee.joiningDate, lang)} তারিখে আপনার যোগদান কার্যকর হবে। উক্ত পদে আপনি কারুশিল্প, এমব্রয়ডারি ডিজাইন ও প্রোডাকশন বিষয়ক দায়িত্ব পালন করবেন।`
+                  : `We are pleased to appoint you as ${employee.designation || ''} at ${company.name || ''}, effective from ${formatDateDisplay(employee.joiningDate, lang)}. In this role, you will be responsible for executing all artisan duties and production standards.`)} 
+                onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
+              />
             </p>
 
             {/* Clean Terms of Employment Box */}

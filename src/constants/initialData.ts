@@ -215,9 +215,9 @@ export const FOOD_FOR_HEALTH_SAMPLE_DATA: AppointmentLetterData = {
     showTable: false,
     components: [],
   },
-  customSubject: 'LETTER OF APPOINTMENT',
+  customSubject: '',
   customGreeting: '',
-  customOpeningParagraph: 'We are pleased to appoint you as Content Writer at Food for Health.\n\nIn this role, you will be responsible for executing all duties and responsibilities related to your position to drive our digital marketing goals.',
+  customOpeningParagraph: '',
   customClosing: 'You are required to maintain full confidentiality regarding all company information and strategies.\n\nWe welcome you to Food for Health and wish you a successful journey with us.\n\nThank you.',
   clauses: [],
   style: {
@@ -271,9 +271,9 @@ export const CREATIVE_DECORE_SAMPLE_DATA: AppointmentLetterData = {
     showTable: false,
     components: [],
   },
-  customSubject: 'APPOINTMENT LETTER - CREATIVE DECORE ARTISAN TEAM',
+  customSubject: '',
   customGreeting: '',
-  customOpeningParagraph: 'We are delighted to formally appoint you as Senior Hand Stitcher & Embroidery Artisan at Creative Decore.\n\nIn this role, you will be an integral part of our handcraft production unit, creating exquisite embroidery designs, maintaining high craftsmanship standards, and preserving traditional handcrafted art.',
+  customOpeningParagraph: '',
   customClosing: 'We are thrilled to welcome you to the Creative Decore family and look forward to creating beautiful handcrafted products together.\n\nWarm regards,',
   clauses: [],
   style: {
@@ -329,9 +329,9 @@ export const YAZMART_SAMPLE_DATA: AppointmentLetterData = {
       { id: '1', name: 'Basic Salary', amount: 18000, type: 'allowance' },
     ],
   },
-  customSubject: 'LETTER OF APPOINTMENT - YAZMART E-COMMERCE PLATFORM',
+  customSubject: '',
   customGreeting: '',
-  customOpeningParagraph: 'On behalf of the executive leadership of YazMart (Multi-Vendor E-Commerce Platform), it is our privilege to formalize your appointment as Content Writer in the Digital Marketing department. As key talent in our marketplace ecosystem, your employment terms, obligations, and financial compensation plan are outlined below:',
+  customOpeningParagraph: '',
   customClosing: 'We welcome you to YazMart and wish you a rewarding and successful journey with our team.',
   clauses: [
     {

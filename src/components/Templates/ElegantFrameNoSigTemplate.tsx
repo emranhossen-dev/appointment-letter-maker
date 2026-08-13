@@ -76,7 +76,7 @@ export const ElegantFrameNoSigTemplate: React.FC<TemplateProps> = ({ data, onUpd
             <div className="mb-4 text-center">
               <h2 className="text-base sm:text-lg font-bold uppercase tracking-wider border-b-2 inline-block pb-1" style={{ color: primaryColor, borderColor: primaryColor }}>
                 <EditableText 
-                  value={customSubject || (isBn ? 'নিয়োগপত্র প্রদান সংক্রান্ত' : 'APPOINTMENT LETTER')} 
+                  value={customSubject || (isBn ? `নিয়োগপত্র - ${employee.designation ? employee.designation.toUpperCase() : ''}` : `LETTER OF APPOINTMENT - ${employee.designation ? employee.designation.toUpperCase() : ''}`)} 
                   onChange={(v) => onUpdate && onUpdate({ ...data, customSubject: v })} 
                 />
               </h2>
@@ -95,8 +95,8 @@ export const ElegantFrameNoSigTemplate: React.FC<TemplateProps> = ({ data, onUpd
                 <EditableText 
                   multiline
                   value={customOpeningParagraph || (isBn 
-                    ? `আমরা আনন্দের সাথে জানাচ্ছি যে, ${company.name}-এ আপনাকে ${employee.designation} পদে নিয়োগ প্রদান করা হলো। আগামী ${formatDateDisplay(employee.joiningDate, lang)} তারিখে আপনার যোগদান কার্যকর হবে। নিয়োগের শর্তাবলী নিম্নে বর্ণিত হলো:`
-                    : `Management is pleased to formalize your appointment as ${employee.designation} at ${company.name}, effective from ${formatDateDisplay(employee.joiningDate, lang)}. The terms and conditions governing your employment are detailed below:`)} 
+                    ? `আমরা আনন্দের সাথে জানাচ্ছি যে, ${company.name || ''}-এ আপনাকে ${employee.designation || ''} পদে নিয়োগ প্রদান করা হলো। আগামী ${formatDateDisplay(employee.joiningDate, lang)} তারিখে আপনার যোগদান কার্যকর হবে। নিয়োগের শর্তাবলী নিম্নে বর্ণিত হলো:`
+                    : `Management of ${company.name || ''} is pleased to formalize your appointment as ${employee.designation || ''}, effective from ${formatDateDisplay(employee.joiningDate, lang)}. The terms and conditions governing your employment are detailed below:`)} 
                   onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
                 />
               </p>

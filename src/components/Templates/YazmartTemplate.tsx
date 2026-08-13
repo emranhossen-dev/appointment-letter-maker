@@ -139,8 +139,8 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
               <EditableText 
                 multiline
                 value={customOpeningParagraph || (isBn 
-                  ? `ইয়াজমার্ট (YazMart)-এর নির্বাহী নেতৃত্বের পক্ষ থেকে আপনাকে ${employee.department ? employee.department + ' বিভাগে ' : ''}${employee.designation} পদে নিয়োগপত্র প্রদান করতে পেরে আমরা আনন্দিত। ইয়াজমার্ট একটি মাল্টি-ভেন্ডর ই-কমার্স প্ল্যাটফর্ম যেখানে বিক্রেতারা শপ খুলে ব্যবসা করেন। উক্ত প্ল্যাটফর্মের উন্নয়ন ও পরিচালনায় আপনার মূল শর্তাবলী ও আর্থিক সুবিধাসমূহ নিম্নে তুলে ধরা হলো:`
-                  : `On behalf of the executive leadership of YazMart (Multi-Vendor E-Commerce Platform), it is our privilege to formalize your appointment as ${employee.designation}${employee.department ? ' in the ' + employee.department + ' department' : ''}. As key talent in our marketplace ecosystem, your employment terms, obligations, and financial compensation plan are outlined below:`)} 
+                  ? `ইয়াজমার্ট (YazMart)-এর নির্বাহী নেতৃত্বের পক্ষ থেকে আপনাকে ${employee.designation} পদে নিয়োগপত্র প্রদান করতে পেরে আমরা আনন্দিত। ইয়াজমার্ট একটি মাল্টি-ভেন্ডর ই-কমার্স প্ল্যাটফর্ম যেখানে বিক্রেতারা শপ খুলে ব্যবসা করেন। উক্ত প্ল্যাটফর্মের উন্নয়ন ও পরিচালনায় আপনার মূল শর্তাবলী ও আর্থিক সুবিধাসমূহ নিম্নে তুলে ধরা হলো:`
+                  : `On behalf of the executive leadership of YazMart (Multi-Vendor E-Commerce Platform), it is our privilege to formalize your appointment as ${employee.designation}. As key talent in our marketplace ecosystem, your employment terms, obligations, and financial compensation plan are outlined below:`)} 
                 onChange={(v) => onUpdate && onUpdate({ ...data, customOpeningParagraph: v })} 
               />
             </p>

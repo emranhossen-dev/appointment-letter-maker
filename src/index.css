@@ -169,4 +169,9 @@ html, body, #root {
     border: none !important;
     background: transparent !important;
   }
+
+  [contenteditable]:empty::before {
+    content: "" !important;
+    display: none !important;
+  }
 }
