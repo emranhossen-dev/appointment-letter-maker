@@ -62,14 +62,19 @@ export const CreativeDecoreTemplate: React.FC<TemplateProps> = ({ data, onUpdate
               <p className="font-bold text-slate-900">
                 <EditableText value={company.name} onChange={(v) => updateCompany('name', v)} />
               </p>
-              <p>
-                <EditableText value={company.address || 'O-5,Nurjahan Road , Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('address', v)} />
-              </p>
-              <p>
-                T: <EditableText value={company.phone || '+880 1957525691'} onChange={(v) => updateCompany('phone', v)} />
-                {company.email ? <span> | E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
-              </p>
-              {company.website ? (
+              {company.address?.trim() ? (
+                <p>
+                  <EditableText value={company.address} onChange={(v) => updateCompany('address', v)} />
+                </p>
+              ) : null}
+              {(company.phone?.trim() || company.email?.trim()) ? (
+                <p>
+                  {company.phone?.trim() ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+                  {company.phone?.trim() && company.email?.trim() ? <span> | </span> : null}
+                  {company.email?.trim() ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+                </p>
+              ) : null}
+              {company.website?.trim() ? (
                 <p className="font-semibold" style={{ color: primaryColor }}>
                   <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
                 </p>
