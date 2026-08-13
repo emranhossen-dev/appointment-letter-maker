@@ -166,13 +166,13 @@ export const ElegantFrameNoSigTemplate: React.FC<TemplateProps> = ({ data, onUpd
         </div>
 
         <div className="text-center sm:text-right leading-tight">
-          {(company.phone || company.email) && (
+          {(company.phone?.trim() || company.email?.trim()) ? (
             <p className="text-[10px] opacity-95">
-              {company.phone ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
-              {company.phone && company.email ? <span> | </span> : null}
-              {company.email ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+              {company.phone?.trim() ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+              {company.phone?.trim() && company.email?.trim() ? <span> | </span> : null}
+              {company.email?.trim() ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
             </p>
-          )}
+          ) : null}
           {company.website && (
             <p className="font-bold text-amber-200 text-xs">
               <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />

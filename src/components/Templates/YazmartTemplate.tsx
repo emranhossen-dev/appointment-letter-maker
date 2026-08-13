@@ -83,13 +83,13 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
               <p className="text-slate-700">
                 <EditableText value={company.city || 'Mohammadpur, Dhaka-1207'} onChange={(v) => updateCompany('city', v)} />
               </p>
-              {(company.phone || company.email) && (
+              {(company.phone?.trim() || company.email?.trim()) ? (
                 <p className="text-slate-600">
-                  {company.phone ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
-                  {company.phone && company.email ? <span> | </span> : null}
-                  {company.email ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+                  {company.phone?.trim() ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+                  {company.phone?.trim() && company.email?.trim() ? <span> | </span> : null}
+                  {company.email?.trim() ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
                 </p>
-              )}
+              ) : null}
               {company.website ? (
                 <p className="font-bold text-blue-600">
                   <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
@@ -209,13 +209,13 @@ export const YazmartTemplate: React.FC<TemplateProps> = ({ data, onUpdate }) => 
         </div>
 
         <div className="text-center sm:text-right leading-tight">
-          {(company.phone || company.email) && (
+          {(company.phone?.trim() || company.email?.trim()) ? (
             <p className="text-[10px] opacity-95 font-medium">
-              {company.phone ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
-              {company.phone && company.email ? <span> | </span> : null}
-              {company.email ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
+              {company.phone?.trim() ? <span>T: <EditableText value={company.phone} onChange={(v) => updateCompany('phone', v)} /></span> : null}
+              {company.phone?.trim() && company.email?.trim() ? <span> | </span> : null}
+              {company.email?.trim() ? <span>E: <EditableText value={company.email} onChange={(v) => updateCompany('email', v)} /></span> : null}
             </p>
-          )}
+          ) : null}
           {company.website ? (
             <p className="font-bold text-amber-300 text-[11px]">
               <EditableText value={company.website} onChange={(v) => updateCompany('website', v)} />
